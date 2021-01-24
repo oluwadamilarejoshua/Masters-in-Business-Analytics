@@ -9,9 +9,9 @@
 library(tidyverse)
 
 # Readding in the data into R
-rail_data <- read.csv("Data\dataToAnalyze.csv", header = T, na.strings = c("", " "))
+rail_data <- read.csv("../Masters in Business Analytics/Data/dataToAnalyze.csv", header = T, na.strings = c("", " "))
 str(rail_data)
-view(rail_data)
+View(rail_data)
 
 
 # SECTION 1 ---------------------------------------------------------------
