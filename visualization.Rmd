@@ -1,0 +1,91 @@
+---
+title: "Data Visualization"
+author: "Joshua Ogundairo"
+date: "1/28/2021"
+output: word_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(tidyverse)
+library(tseries)
+
+```
+
+
+## Data Manipulation and visualization
+
+
+
+```{r cars}
+
+visual_data <- X2019_Statistical_Bulletin_Public_Finance_Statistics_Final_e_Copy
+
+visual_data <- visual_data[-c(1, 26 : 31) ,]
+View(visual_data)
+transposed_data <- t(as.vector(visual_data))
+View(transposed_data)
+attach(as.data.frame(transposed_data))
+
+attach(test_data)
+
+```
+
+# Simple plots
+
+```{r}
+# ggplot(data = transposed_data) + geom_histogram(mapping = aes(x = ))
+
+head(test_data)
+
+table(test_data$NRR)
+
+ggplot(data = test_data) + geom_bar(mapping = aes(x = NRR))
+ggplot(data = test_data) + geom_histogram(mapping = aes(x = EEE_Full))
+```
+
+## How to choose basic plots for variables
+
+There are basically 2 types of variables: Categorical, and Continuous variables. The choice of plots/charts depebnds on which type of variable is under consideration. basic plots for categorical variable is the barplot while basic plot for continuous variable is the histogram.
+
+Each of Eastern, North West & Central, Scotland's Rail, Southern, and Wales & Western will have their individual bars that will plot/show their magnitude.
+
+
+# An example of visualization problem
+
+> How does people use the season ticket across the regions?
+> What region uses Full tickets the most?
+
+
+### Solution of first question
+
+Variables involved: Region (NRR), Season ticket (EEE_Season)
+type of these variables: Categorical, Continuous
+what plot/chart to use: 
+
+```{r}
+# The plot
+
+ggplot(data = test_data) + geom_point(mapping = aes(x = NRR, y = EEE_Season))
+
+```
+
+
+Variables involved: Region (NRR), Full ticket (EEE_Full)
+type of these variables: Categorical, Continuous
+what plot/chart to use: 
+
+```{r}
+
+ggplot(data = test_data) + geom_point(mapping = aes(x = NRR, y = EEE_Full))
+```
+
+```{r}
+
+pie(x = NRR)
+
+```
+
